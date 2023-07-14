@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block body %}
+<h1>Welcome to Car Prediction</h1>
+<form method="post" action="/compute">
+  <div>
+    <input autocomplete="off" autofocus required placeholder="Present Price" name="Present_Price" type="text" />
+  </div>
+  <div>
+    <input placeholder="Kms Driven" autocomplete="off" type="type" name="Kms_Driven" id="Kms_Driven" required
+      autofocus />
+  </div>
+  <label for="Fuel_Type" style="left: auto;color: darkblue;">Fuel Type</label>
+  {% for i in Fuel_Type%}
+  <div>
+    <input type="radio" name="Fuel_Type" id="Fuel_Type" value="{{i}}" required />{{Fuel_Type[i]}}
+  </div>
+  {% endfor %}
+  <label for="Seller_Type" style="left: auto;color: darkblue;"">Seller Type</label>
+  {% for i in Seller_Type %}
+  <div>
+
+    <input type="radio" name="Seller_Type" id="Seller_Type" value="{{i}}"
+      required autofocus />{{Seller_Type[i]}}
+  </div>
+  {% endfor %}
+  <label for="Transmission" style="left: auto;color: darkblue;">Transmission</label>
+  {% for i in Tansmission %}
+  <div>
+    <input   type="radio" name="Transmission"
+      value="{{i}}" id="Transmission" required />{{Tansmission[i]}}
+  </div>
+  {% endfor %}
+  <div>
+    <input autofocus placeholder="age of car" autocomplete="off" type="type" name="age_of_the_car" id="age_of_the_car"
+      required />
+  </div>
+  <div><input type="submit" value="Predict" style="color: blue;box-shadow: 0cqmax;"/></div>
+</form>
+<div>
+  <strong> <span style="color: #0a0506">{{ prediction_text }}</span></strong>
+</div>
+{% endblock %}
